@@ -24,6 +24,7 @@
 
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
     <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/latex_model_styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
     <link href="assets/fontawesome-free-6.6.0-web/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
@@ -68,7 +69,8 @@
                     <p class="abstract">
                         Generative AI (GenAI) holds significant promise for automating everyday image editing tasks,
                         especially following the recent release of <a
-                            href="https://openai.com/index/introducing-4o-image-generation/">GPT-4o</a> on March 25,
+                            href="https://openai.com/index/introducing-4o-image-generation/"><span
+                                class="model-style">GPT-<span class="text-gpt-green">4o</span></span></a> on March 25,
                         2025. However, what subjects do
                         people most often want edited? What kinds of editing actions do they want to perform (e.g.,
                         removing or stylizing the subject)? Do people prefer precise edits with predictable outcomes or
@@ -80,12 +82,15 @@
                             href="https://www.reddit.com/r/PhotoshopRequest/">Reddit community</a>, which collected 305k
                         PSR-wizard edits. According to human ratings, approximately only 33% of requests can be
                         fulfilled by the best AI editors (including <a
-                            href="https://openai.com/index/introducing-4o-image-generation/">GPT-4o</a>, <a
-                            href="https://gemini.google/overview/image-generation/?hl=en">Gemini-2.0-Flash</a>, <a
-                            href="https://seededit.org/">SeedEdit</a>). Interestingly,
+                            href="https://openai.com/index/introducing-4o-image-generation/"><span
+                                class="model-style">GPT-<span class="text-gpt-green">4o</span></span></a>, <a
+                            href="https://gemini.google/overview/image-generation/?hl=en"><span
+                                class="model-style">Gemini-<span class="text-gemini-blue">2.0</span>-Flash</span></a>,
+                        <a href="https://seededit.org/">SeedEdit</a>). Interestingly,
                         AI editors perform worse on low-creativity requests that require precise editing than on more
                         open-ended tasks. They often struggle to preserve the identity of people and animals, and
-                        frequently make non-requested touch-ups. On the other side of the table, VLM judges (e.g., o1)
+                        frequently make non-requested touch-ups. On the other side of the table, VLM judges (e.g., <span
+                            class="model-style"><span class="text-headerblue">o1</span></span>))
                         perform differently from human judges and may prefer AI edits more than human edits.
                     </p>
                     <!-- Using FontAwesome Pro -->
@@ -118,7 +123,7 @@
                 </div>
 
                 <div class="info">
-                    <p>Preprint</p>
+                    <p>preprint</p>
                 </div>
             </div>
 

@@ -1,0 +1,137 @@
+/* assets/stylesheets/latex_model_styles.css */
+
+/* Color definitions from LaTeX */
+:root {
+    --gpt_green: rgb(22, 163, 127);
+    --gemini_blue: rgb(81, 134, 209);
+    --sonnet3_brown: rgb(204, 154, 123);
+    --sonnet35_brown: rgb(216, 119, 87);
+    --qwen_violet: rgb(191, 123, 234);
+    --headerblue: rgb(51, 122, 183);
+    --categorygray: rgb(245, 245, 245);
+    --subjective: rgb(255, 243, 230);
+    --random: rgb(230, 255, 230);
+    --objective: rgb(230, 240, 255);
+    --hard: rgb(255, 230, 230);
+    --pixtral_orange: rgb(255, 138, 0);
+    --llama_blue: rgb(0, 102, 204);
+    --internvl_blue: rgb(0, 153, 255);
+    --llava_red: rgb(204, 0, 0);
+    --gemma_blue: rgb(0, 128, 255);
+    --lightblue: rgb(217, 235, 255);
+    /* from LaTeX {rgb}{0.85,0.92,1} */
+    --rowLow: rgb(255, 239, 213);
+    --rowMed: rgb(255, 255, 204);
+    --rowHigh: rgb(210, 255, 210);
+}
+
+/* Style for the \model LaTeX command: \small \fontfamily{phv} */
+.model-style {
+    font-family: Helvetica, Arial, sans-serif;
+    /* phv is a Helvetica variant */
+    /* font-size: small; */
+    /* Corresponds to LaTeX \small - Removed for consistency with surrounding text */
+}
+
+/*
+  Text color utility classes.
+  Usage based on LaTeX \textcolor{colorname}{text}.
+  Example for \geminiflash which is \model{Gemini-\textcolor{gemini_blue}{2.0}-Flash}:
+  <span class="model-style">Gemini-<span class="text-gemini-blue">2.0</span>-Flash</span>
+*/
+.text-gpt-green {
+    color: var(--gpt_green);
+}
+
+.text-gemini-blue {
+    color: var(--gemini_blue);
+}
+
+.text-sonnet3-brown {
+    color: var(--sonnet3_brown);
+}
+
+.text-sonnet35-brown {
+    color: var(--sonnet35_brown);
+}
+
+.text-qwen-violet {
+    color: var(--qwen_violet);
+}
+
+.text-headerblue {
+    color: var(--headerblue);
+}
+
+/* The following colors are very light; ensure sufficient contrast if used for text on light backgrounds. */
+.text-categorygray {
+    color: var(--categorygray);
+}
+
+.text-subjective {
+    color: var(--subjective);
+}
+
+.text-random {
+    color: var(--random);
+}
+
+.text-objective {
+    color: var(--objective);
+}
+
+.text-hard {
+    color: var(--hard);
+}
+
+.text-pixtral-orange {
+    color: var(--pixtral_orange);
+}
+
+.text-llama-blue {
+    color: var(--llama_blue);
+}
+
+.text-internvl-blue {
+    color: var(--internvl_blue);
+}
+
+.text-llava-red {
+    color: var(--llava_red);
+}
+
+.text-gemma-blue {
+    color: var(--gemma_blue);
+}
+
+.text-lightblue {
+    color: var(--lightblue);
+}
+
+.text-rowLow {
+    color: var(--rowLow);
+}
+
+.text-rowMed {
+    color: var(--rowMed);
+}
+
+.text-rowHigh {
+    color: var(--rowHigh);
+}
+
+/*
+  To replicate the provided LaTeX commands in HTML:
+
+  LaTeX: \newcommand{\geminiflash}{\model{Gemini-\textcolor{gemini_blue}{2.0}-Flash}\xspace}
+  HTML: <span class="model-style">Gemini-<span class="text-gemini-blue">2.0</span>-Flash</span>
+
+  LaTeX: \newcommand{\geminiflashnew}{\model{Gemini-\textcolor{gemini_blue}{2.5}-Flash}\xspace}
+  HTML: <span class="model-style">Gemini-<span class="text-gemini-blue">2.5</span>-Flash</span>
+
+  LaTeX: \newcommand{\geminiflashthinking}{\model{Gemini-\textcolor{gemini_blue}{2.0}-Flash-Thinking}\xspace}
+  HTML: <span class="model-style">Gemini-<span class="text-gemini-blue">2.0</span>-Flash-Thinking</span>
+
+  LaTeX: \newcommand{\geminipro}{\model{Gemini-\textcolor{gemini_blue}{2.5}-Pro}\xspace}
+  HTML: <span class="model-style">Gemini-<span class="text-gemini-blue">2.5</span>-Pro</span>
+*/
