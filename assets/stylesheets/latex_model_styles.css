@@ -120,6 +120,17 @@
     color: var(--rowHigh);
 }
 
+/* Style for the \action LaTeX command */
+.action-style {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    /* Light grey background */
+    padding: 1px 3px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    /* Slightly smaller font size */
+}
+
 /*
   To replicate the provided LaTeX commands in HTML:
 
