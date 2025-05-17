@@ -506,8 +506,8 @@
     </div>
 
 
-    <div class="container blog extra-large gray" id="dataset_comparison_table">
-        <h1>Dataset Comparison</h1>
+    <div class="container blog extra-large gray" id="tab:image_editing_action_verbs">
+        <h1>Image Editing Action Verbs</h1>
         <div class="table-wrapper">
 
             <table class="action-verbs">
@@ -598,8 +598,9 @@
             of
             the more technically precise phrasing such as "<em>Improve the lighting to make the subject stand out</em>".
             To
-            properly categorize user intent, we develop a diverse list of <span id="numberOfAction">15</span> (<a
-                href="#tab:image_editing_action_verbs">Table 1</a>) action verbs that cover various editing actions.
+            properly categorize user intent, we develop a diverse list of <span id="numberOfAction">15</span> action
+            verbs that cover various editing
+            actions.
         </p>
         <p class="text">
             We find that previous efforts to create action verb taxonomies <a href="#manuvinakurike2018edit">[3]</a>, <a
@@ -617,7 +618,7 @@
             Additionally, we consult image editing experts in the field to refine our list of actions to accurately
             reflect
             image-synthesis tasks in computer vision (e.g., super-resolution).
-            <a href="#tab:image_editing_action_verbs">Table 1</a> presents the final list of action verbs.
+            <a href="#tab:image_editing_action_verbs">Table Action Verbs</a> presents the final list of action verbs.
         </p>
 
         <h3>Creativity Level:</h3>
@@ -663,8 +664,7 @@
             and keyword extraction.
             We prompt <span class="model-style">InternVL-<span class="text-gemini-blue">2.5</span>-38B</span> to
             summarize
-            each image into 36 JSON keys (see
-            <a href="#fig:supp-json-schema">supplementary Figure Y on JSON schema</a>), capturing essential attributes
+            each image into 36 JSON keys, capturing essential attributes
             such
             as image type (e.g., photograph or digital art), location, weather conditions, presence of people, and lists
             of
@@ -677,8 +677,7 @@
 
         <h3>Extracting Subject and Action Verbs:</h3>
         <p class="text">
-            We use a zero-shot prompting to extract actions from the request (<a
-                href="#tab:image_editing_action_verbs">Table 1</a>).
+            We use a zero-shot prompting to extract actions from the request.
             <span class="model-style">GPT-<span class="text-gpt-green">4o</span>-mini</span> is provided with a
             list of valid actions, their descriptions,
             the
@@ -702,10 +701,11 @@
             and assign a final synset to the subject.
         </p>
         <p class="text">
-            We use <span class="model-style">o1-pro</span> <a href="#openai2025o1pro">[7]</a> to summarize WordNet
+            We use <span class="model-style">o<span class="text-gpt-green">1</span>-pro</span> to summarize
+            WordNet
             subjects
-            into higher-level semantic categories and organize them into five main and twelve subcategories (<a
-                href="#tab:category_hierarchy">Table Z on category hierarchy</a>). Since the extracted WordNet synsets
+            into higher-level semantic categories and organize them into five main and twelve subcategories. Since the
+            extracted WordNet synsets
             from
             the previous step vary in granularity, a reasoning model with long-context capabilities, such as <span
                 class="model-style">o1-pro</span>, effectively groups these synsets into structured categories. This
