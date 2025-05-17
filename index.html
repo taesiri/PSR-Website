@@ -758,8 +758,8 @@
         <h2>AI editors:</h2>
         <p class="text">
             We process each request using three generalist SOTA image editing tools: <span
-                class="model-style">SeedEdit</span> [shi2024seededit], <span class="model-style">Gemini-<span
-                    class="text-gemini-blue">2.0</span>-Flash</span> (Image Generation Experimental) , and
+                class="model-style">SeedEdit</span>, <span class="model-style">Gemini-<span
+                    class="text-gemini-blue">2.0</span>-Flash</span>, and
             <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> .<sup><a href="#fn1_exp"
                     id="fnref1_exp" title="Footnote">1</a></sup>
             For each request, we generate two images using both the original instruction (OI) provided by the user and a
@@ -797,17 +797,16 @@
         <h2>Automated metrics and VLM judges:</h2>
         <p class="text">
             We use two automated evaluation methods to complement our human study: LAION <em>Aesthetic Score</em>
-            [hentschel2022clip, wang2023exploring, wu2024q] and <em>VLM-as-a-Judge</em> [lee2024prometheus,
-            chen2024iqagpt, xiong2024llava, chen2024mllm]. The Aesthetic Score quantifies visual appeal based on
+            and <em>VLM-as-a-Judge</em> . The Aesthetic Score quantifies visual appeal based on
             large-scale human preference data, while VLM-as-a-Judge leverages VLMs to provide evaluative feedback on
             images, with reasoning capabilities that articulate specific visual qualities and explain judgments.
             Both metrics serve as proxies for human judgment, enabling scalable assessment of AI-generated and
             human-edited images.
-            We use LAION's Aesthetic Score Predictor [schuhmann2023improved] for calculating aesthetic metrics, and
-            <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> [openai2024gpt4o], <span
-                class="model-style">o<span class="text-gpt-green">1</span></span> [openai_o1], and <span
+            We use LAION's Aesthetic Score Predictor for calculating aesthetic metrics, and
+            <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span>, <span
+                class="model-style">o<span class="text-gpt-green">1</span></span>, and <span
                 class="model-style">Gemini-<span class="text-gemini-blue">2.0</span>-Flash-Thinking</span>
-            [GoogleDeepMind2024Gemini2] as the VLM models for judgment tasks.
+            as the VLM models for judgment tasks.
         </p>
         <div class="footnotes">
             <hr>
@@ -1002,8 +1001,10 @@
         <p class="text">
             Different image editing requests necessitate varying types and levels of editing depending on the subject
             and required action, ranging from subtle, precise modifications (e.g., ``remove the
-            quote'' \cref{fig:ai_wins_and_failures}a) to complete transformations (e.g., ``cartoonize this image''
-            \cref{fig:ai_wins_and_failures}f). While our results show human edits are generally preferred, AI models
+            quote'' (<a href="#fig:ai_wins_and_failures">Figure 2-a</a>)) to complete transformations (e.g.,
+            ``cartoonize this image''
+            (<a href="#fig:ai_wins_and_failures">Figure 2-f</a>). While our results show human edits are generally
+            preferred, AI models
             have shown they can handle a subset of these diverse requests at a competitive rate with human editors. This
             capability raises a question: what is the overall percentage of requests that AI models can already handle?
         </p>
