@@ -195,7 +195,7 @@
             challenges posed by the real requests, which may have typos, distraction or ambiguity (e.g.,
             &ldquo;<em>I&apos;d love to see how crazy this could get... Thank you in advance!!</em>&rdquo; in this <a
                 href="https://www.reddit.com/r/PhotoshopRequest/comments/c7f1pa/random_id_love_to_see_how_crazy_this_could_get/">post</a>;
-            <a href="#fig:teaser_container">see Figure teaser</a>).
+            <a href="#fig:teaser_container">Figure.1</a>).
             On the other hand, some datasets feature images edited by AIs and therefore do not represent the real edits
             by advanced
             photo editors.
@@ -251,9 +251,11 @@
 
 
     <div class="container blog  extra-large gray">
-        <img src="assets/figures/teaser_human.svg">
+        <img src="assets/figures/teaser_human.svg" id="fig:teaser_container">
         <p class="caption">
-            We propose PSR—the largest dataset to date of real-world image-editing requests and their
+            <strong>Figure. 1</strong>: We propose PSR—the largest dataset to date of real-world image-editing requests
+            and
+            their
             corresponding human-made edits.
             PSR enables the community (and our work) to identify the types of requests that can be automated using
             existing AIs and those that need improvement.
@@ -464,16 +466,283 @@
 
 
     <div class="container blog main">
-        <h1>PSR Dataset Construction</h1>
+        <h1 id="sec:data_creation_section">PSR Dataset Construction</h1>
+
+        <h2 id="sec:data_collection">Data Collection</h2>
         <p class="text">
-            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
-            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
-            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
-            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
-            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
-            sociosqu.
+            We source our dataset from Reddit's <a
+                href="https://www.reddit.com/r/PhotoshopRequest/">/r/PhotoshopRequest</a>
+            community (2013–early 2025). Historical data (up to Nov 2022) comes from PushShift, while recent data
+            (Oct 2024–Feb 2025) is collected daily via a custom crawler, as PushShift lacks data after Nov 2022.
+        </p>
+
+        <h2 id="sec:data_taxonomoy">Taxonomy Development</h2>
+        <p class="text">
+            We present a taxonomy capturing the spectrum of image editing requests across three dimensions:
+            <em>subject</em>, <em>action verb</em>, and <em>creativity level</em>. The subject identifies the element
+            modified, the action verb specifies the modification, and the creativity level distinguishes routine tasks
+            from
+            those allowing multiple, open-ended interpretations.
+            This framework enables precise analysis of automated image editing tasks and highlights that even routine
+            edits,
+            such as object <span class="action-style">removal</span>, vary significantly depending on whether the
+            subject is
+            a person, animal, or object.
+            While low-creativity tasks often suit standard automation tools, high-creativity tasks (<a
+                href="#fig:ai_wins_and_failures">see Figure 2</a>) demand models with greater flexibility.
+        </p>
+
+        <h3>Subject:</h3>
+        <p class="text">
+            The subject of an image editing request is the specific element being modified—e.g., in a request to remove
+            a
+            person, the subject is the person. Subjects may include objects, persons, or the entire image. To
+            systematically
+            classify subjects from user instructions, we leverage WordNet's taxonomy.
+            We first extract subjects from raw instructions, then match each to the nearest synset (semantic category)
+            in
+            WordNet's structured lexical database, providing standardized classification and reduced ambiguity.
         </p>
     </div>
+
+
+    <div class="container blog extra-large gray" id="dataset_comparison_table">
+        <h1>Dataset Comparison</h1>
+        <div class="table-wrapper">
+
+            <table class="action-verbs">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Description&nbsp;and&nbsp;Sample&nbsp;Request</th>
+                        <th>Action</th>
+                        <th>Description&nbsp;and&nbsp;Sample&nbsp;Request</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>add</td>
+                        <td>Insert new elements, objects, text, or effects. <em>e.g. “Add a copyright watermark to the
+                                bottom
+                                right.”</em></td>
+                        <td>adjust</td>
+                        <td>Modify properties like tones, contrast, and saturation. <em>e.g. “Increase saturation a bit
+                                on the
+                                elephants.”</em></td>
+                    </tr>
+                    <tr>
+                        <td>apply</td>
+                        <td>Add filters, styles, or effects. <em>e.g. “Apply a vintage film effect.”</em></td>
+                        <td>clone</td>
+                        <td>Duplicate elements inside the image. <em>e.g. “Use cloning tool to blend grass over dirt
+                                patches.”</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>crop</td>
+                        <td>Trim edges for a smaller image. <em>e.g. “Crop to square format for social media.”</em></td>
+                        <td>delete</td>
+                        <td>Remove elements, objects, or imperfections. <em>e.g. “Remove the jacket hanging from the
+                                girl's
+                                side.”</em></td>
+                    </tr>
+                    <tr>
+                        <td>replace</td>
+                        <td>Substitute objects or text. <em>e.g. “Please change the pamphlet into a dictionary.”</em>
+                        </td>
+                        <td>transform</td>
+                        <td>Flip, scale, rotate, or skew elements. <em>e.g. “Fix the perspective of the building.”</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>move</td>
+                        <td>Reposition elements while keeping the rest unchanged. <em>e.g. “Shift the logo
+                                20&nbsp;pixels up.”</em>
+                        </td>
+                        <td>merge</td>
+                        <td>Combine elements or effects. <em>e.g. “Create a panorama from these shots.”</em></td>
+                    </tr>
+                    <tr>
+                        <td>super-resolution</td>
+                        <td>Increase resolution for clearer details. <em>e.g. “Can someone upscale this image to&nbsp;4K
+                                resolution?”</em></td>
+                        <td>re-color</td>
+                        <td>Change the color of an element, object, or text. <em>e.g. “Can someone change the dog's fur
+                                to
+                                black?”</em></td>
+                    </tr>
+                    <tr>
+                        <td>relight</td>
+                        <td>Adjust lighting conditions. <em>e.g. “Can someone make lighting better / remove
+                                shadows?”</em></td>
+                        <td>zoom</td>
+                        <td>Change scale to focus or zoom out. <em>e.g. “Zoom in on the man.”</em></td>
+                    </tr>
+                    <tr>
+                        <td>specialized</td>
+                        <td>Advanced or composite editing tasks. <em>e.g. “Can someone vectorize this logo without
+                                background?”</em>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="container blog main">
+        <h3>Action Verb:</h3>
+        <p class="text">
+            Users often describe their editing intentions in vague terms i.e., "<em>Make this look better</em>" instead
+            of
+            the more technically precise phrasing such as "<em>Improve the lighting to make the subject stand out</em>".
+            To
+            properly categorize user intent, we develop a diverse list of <span id="numberOfAction">15</span> (<a
+                href="#tab:image_editing_action_verbs">Table 1</a>) action verbs that cover various editing actions.
+        </p>
+        <p class="text">
+            We find that previous efforts to create action verb taxonomies <a href="#manuvinakurike2018edit">[3]</a>, <a
+                href="#tan2019expressing">[4]</a> are tied to specific, low-level tools in popular image editing
+            software
+            tools that do not communicate the high-level user intent and also do not contain specific edit actions like
+            <span class="action-style">super-resolution</span>. This limitation motivated us to develop our own taxonomy
+            to
+            ensure comprehensive coverage of modern image editing techniques.
+        </p>
+        <p class="text">
+            To develop our taxonomy, we feed a large random subset of the edit requests into <span
+                class="model-style">GPT-4</span> <span class="gpt-logo"></span> and prompt the model to summarize common
+            editing actions.
+            Additionally, we consult image editing experts in the field to refine our list of actions to accurately
+            reflect
+            image-synthesis tasks in computer vision (e.g., super-resolution).
+            <a href="#tab:image_editing_action_verbs">Table 1</a> presents the final list of action verbs.
+        </p>
+
+        <h3>Creativity Level:</h3>
+        <p class="text">
+            We categorize editing requests into three levels of creativity freedom involved in the editing process and
+            the
+            potential variation in the final outcome.
+        </p>
+        <ol style="list-style-type: decimal; margin-left: 20px;" class="text">
+            <li><strong>Low Creativity</strong> edits require minimal creative input and produce highly predictable
+                results
+                such as "<em>remove a person</em>" or "<em>erase an object</em>".</li>
+            <li><strong>Medium Creativity</strong> requests allow for some variation but still follow a structured
+                approach,
+                for example, "<em>change the background</em>" or "<em>adjust lighting to look cinematic</em>".</li>
+            <li><strong>High Creativity</strong> requests demand significant creative interpretation and can lead to
+                widely
+                different outcomes depending on the editor's vision, for instance, "<em>make this image look
+                    magical</em>"
+                or "<em>transform this into a fantasy scene</em>".</li>
+        </ol>
+        <p class="text">
+            This creativity classification helps differentiate between objective, technical edits and imaginative,
+            open-ended transformations, ensuring that automated and human editing processes can be tailored accordingly.
+            While creativity level is not a traditional dataset metric, we feel that it is an underused tool as a way to
+            measure model accuracy. When evaluating an image editing model, it is desirable to see pixel-level precision
+            on
+            low creativity edits involving real-world objects. However, high creativity edits, such as (f) in <a
+                href="#fig:ai_wins_and_failures">Figure X (f)</a>, may not need this level of realistic precision.
+            Examples
+            of other levels of creativity can be found in <a href="#fig:ai_wins_and_failures">Figure X</a> as well.
+        </p>
+
+        <h2 id="sec:dataset_annotation_process">Dataset Annotation Process</h2>
+        <p class="text">
+            We use <span class="model-style">GPT-<span class="text-gpt-green">4o</span>-mini</span> and <span
+                class="model-style">InternVL-<span class="text-gemini-blue">2.5</span>-38B</span>
+            to annotate our
+            dataset.
+            <span class="model-style">GPT-<span class="text-gpt-green">4o</span>-mini</span> generates
+            taxonomy-related labels, while <span class="model-style">InternVL-<span
+                    class="text-gemini-blue">2.5</span>-38B</span> performs image captioning
+            and keyword extraction.
+            We prompt <span class="model-style">InternVL-<span class="text-gemini-blue">2.5</span>-38B</span> to
+            summarize
+            each image into 36 JSON keys (see
+            <a href="#fig:supp-json-schema">supplementary Figure Y on JSON schema</a>), capturing essential attributes
+            such
+            as image type (e.g., photograph or digital art), location, weather conditions, presence of people, and lists
+            of
+            objects in the image.
+            To identify posts unrelated to image editing (e.g., when users post an image seeking proof of authenticity
+            rather than requesting an edit), we instruct <span class="model-style">GPT-<span
+                    class="text-gpt-green">4o</span>-mini</span> to output a binary
+            flag, <code>image_editing_relevant</code>, indicating whether the post pertains to image editing.
+        </p>
+
+        <h3>Extracting Subject and Action Verbs:</h3>
+        <p class="text">
+            We use a zero-shot prompting to extract actions from the request (<a
+                href="#tab:image_editing_action_verbs">Table 1</a>).
+            <span class="model-style">GPT-<span class="text-gpt-green">4o</span>-mini</span> is provided with a
+            list of valid actions, their descriptions,
+            the
+            input image, and the user-provided request. The prompt instructs the model to first examine the image,
+            then
+            rewrite the instruction in clear and simplified language to eliminate ambiguity, and finally identify
+            the
+            subjects of the edits along with the corresponding editing actions.
+        </p>
+
+        <h3>Mapping Subjects to WordNet:</h3>
+        <p class="text">
+            We map the extracted subjects from the previous stage to WordNet's synsets. Once the subjects are
+            identified, we
+            provide <span class="model-style">GPT-<span class="text-gpt-green">4o</span>-mini</span> with the
+            image, instruction, and subject, instructing
+            it to
+            select the closest WordNet synset based on the given context. Since the generated synset may not always be
+            valid, we perform a search within the WordNet lexical database using NLTK to find the closest matching
+            synset
+            and assign a final synset to the subject.
+        </p>
+        <p class="text">
+            We use <span class="model-style">o1-pro</span> <a href="#openai2025o1pro">[7]</a> to summarize WordNet
+            subjects
+            into higher-level semantic categories and organize them into five main and twelve subcategories (<a
+                href="#tab:category_hierarchy">Table Z on category hierarchy</a>). Since the extracted WordNet synsets
+            from
+            the previous step vary in granularity, a reasoning model with long-context capabilities, such as <span
+                class="model-style">o1-pro</span>, effectively groups these synsets into structured categories. This
+            approach results in a more coherent and meaningful subject categories.
+        </p>
+
+        <h3>Assigning Creativity Levels:</h3>
+        <p class="text">
+            We use few-shot prompting to assign creativity levels. <span class="model-style">GPT-<span
+                    class="text-gpt-green">4o</span>-mini</span> receives
+            the
+            original
+            image and request, along with examples annotated by creativity level, to classify the input accordingly.
+        </p>
+
+        <h2 id="sec:dataset_statistics">Dataset Statistics</h2>
+        <p class="text">
+            Our final dataset consists of <span id="datasetAllPostsFinaldataset">83k</span> posts and <span
+                id="datasetAllEditsFinaldataset">305k</span> edited images, categorized by creativity levels as <span
+                style="background-color: #ffe6e6;">56%</span> low, <span style="background-color: #e6f2ff;">28%</span>
+            medium, and <span style="background-color: #e6ffe6;">16%</span> high. It includes 49,134 unique subjects,
+            predominantly falling under the <em>People and Related</em> category (53.5\%). The primary action requested
+            by
+            users is <span class="action-style">delete</span> (32.9\%), typically involving the removal of individuals
+            or
+            visual clutter to enhance aesthetics or professionalism. Detailed dataset statistics are provided in <a
+                href="#sec:supp-dataset_stats">Supplementary Section on Dataset Stats</a>.
+        </p>
+    </div>
+
+    <div class="container blog  extra-large gray">
+        <img src="assets/figures/dataset_samples_ai_win_loses.png" id="dataset_samples_ai_win_loses">
+        <p class="caption">
+
+        </p>
+    </div>
+
 
 
     <div class="container blog main">
