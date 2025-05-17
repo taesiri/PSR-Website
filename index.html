@@ -574,12 +574,48 @@
     <div class="container blog main">
         <h1>Human Edits Are Strongly Preferred by Human Raters</h1>
         <p class="text">
-            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
-            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
-            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
-            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
-            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
-            sociosqu.
+            We collect a total of 4,359 human votes from 122 different users, and \cref{tab:main_results} summarizes the
+            preferences based on the collected votes.
+            Human raters prefer human edits in 66.0\% of cases, while AI edits are preferred in only 25.8\% of cases.
+        </p>
+        <p class="text">
+            Within the <span style="background-color: lightblue; padding: 1px 3px; border-radius: 3px;">model
+                groups</span>, the preference for human edits remains consistent across different models, with
+            preference rates ranging from 53.6\% to 73.2\% in favor of human edits. \SeedEdit{} \seedlogo achieves the
+            highest overall preference win rate at 37.8\%, followed by \gpt{}, with a win rate of 32.8\%.
+        </p>
+        <p class="text">
+            Breaking down the ratings by creativity still shows a preference for human edits across all three creativity
+            groups. Although human edits are consistently preferred, the gap between human and AI performance is smaller
+            for <span style="background-color: #E6E6FA; padding: 1px 3px; border-radius: 3px;">high-creativity</span>
+            requests (60.9\% vs.\ 30.7\%) compared to <span
+                style="background-color: #FFF0F5; padding: 1px 3px; border-radius: 3px;">medium-creativity</span>
+            (67.6\% vs.\ 25.3\%) and <span
+                style="background-color: #F0FFF0; padding: 1px 3px; border-radius: 3px;">low-creativity</span> requests
+            (70.1\% vs.\ 21.1\%).
+            We hypothesize that this is because, in high-creativity scenarios, human evaluators tend to prioritize
+            originality over detail—unlike in low- or medium-creativity requests.
+        </p>
+        <p class="text">
+            Analyzing model performance across image editing action verbs (\cref{tab:verb-win-rates}) shows models
+            struggle with actions like \action{crop} and \action{zoom}, yet perform competitively with humans on tasks
+            such as \action{apply} and \action{merge}. For detailed performance breakdowns, see
+            \Cref{sec:supp-win_rate_breakdown}.
+        </p>
+        <p class="text">
+            Furthermore, we conduct a qualitative analysis (\Cref{sec:supp-why_ai_wins_or_lose}) to identify common
+            patterns in cases where AI edits either succeed or fail. AI-generated edits typically outperform human
+            alternatives due to their higher accuracy in reflecting user instructions. This precision in following the
+            original request accounts for the majority (72\%) of AI wins. In contrast, AI edits often lose because they
+            misunderstand or misinterpret user requests, with comprehension errors representing the most common cause
+            (43\%). Additionally, AI systems frequently introduce unintended changes or artifacts—most notably,
+            distortions of facial identity—which further diminish their reliability.
+        </p>
+        <p class="text">
+            A major issue with the current generation of AI image editing models is how they struggle to preserve the
+            identity of people in an image. This problem is more pronounced in \gpt{}, as shown in
+            \cref{fig:gpt_facial_fails}. In this example, using \gpt{} to make successive edits to an input image of a
+            person results in a final image that loses its similarity to the original person.
         </p>
     </div>
 
@@ -604,24 +640,71 @@
     <div class="container blog main">
         <h1>VLM-as-a-Judge Is a Poor Proxy for Human Preferences</h1>
         <p class="text">
-            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
-            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
-            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
-            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
-            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
-            sociosqu.
+            Automated feedback from a judge model can be used to significantly boost a student model's performance
+            through processes like reinforcement through AI feedback (RLAIF)&nbsp;[lee2023rlaif]. To determine the
+            accuracy of VLM-as-a-Judge feedback, we collect over 10,300 ratings from three separate VLMs acting as
+            judges between human edits and AI edits.
+        </p>
+        <p class="text">
+            The results highlight a clear contrast in overall preferences between humans and VLMs, showing that
+            VLM-as-a-Judge is a poor proxy for human preferences. While humans strongly prefer human-generated edits (as
+            discussed in the section "Human Edits Are Strongly Preferred by Human Raters"), all three VLMs exhibit mixed
+            preferences, splitting their selections approximately evenly (around 50%) between human and AI edits.
+            Additionally, Cohen's &kappa; scores (refer to Table new_kappa) further confirm weak agreement between human
+            judgments and VLM assessments, with <span class="model-style"><span class="text-headerblue">o1</span></span>
+            achieving the highest agreement score of &kappa; = 0.22, which nonetheless remains low.
+        </p>
+        <p class="text">
+            When examining VLM ratings by individual <span
+                style="background-color: #E6E6FA; padding: 1px 3px; border-radius: 3px;">model groups</span>, we observe
+            a clear preference among VLMs for edits produced by <span class="model-style">SeedEdit</span> and <span
+                class="model-style">GPT</span>.
+            Notably, <span class="model-style"><span class="text-headerblue">o1</span></span> selects edits from <span
+                class="model-style">GPT</span> 83.9% of the time. Conversely, for edits generated by <span
+                class="model-style">Gemini-<span class="text-gemini-blue">Flash</span></span> or <span
+                class="model-style">Hugging Face models</span>, VLMs generally favor human-made edits. Despite this,
+            agreement with human judgments remains relatively low, with Cohen's &kappa; ranging from 0.14 to 0.25, which
+            is near random in some cases (refer to Table new_kappa_model_group).
+        </p>
+        <p class="text">
+            We analyze a subset of judges' ratings to better understand why their assessments differ from human
+            judgments. Although VLMs can provide detailed verbal feedback, they often remain <em>blind</em> to critical
+            details in images and may fail to accurately capture or articulate all differences between image pairs (see
+            Supplementary Section on VLM-as-a-Judge Blind Spots). Additionally, VLMs occasionally overlook significant
+            aspects, such as changes in characters' identities, and sometimes even hallucinate nonexistent elements (see
+            Supplementary Section on Judge Failures). These issues highlight ongoing challenges in effectively
+            leveraging VLMs as reliable judges.
         </p>
     </div>
 
     <div class="container blog main">
         <h1>AI Models Tend To Improve Aesthetics Even When Not Requested</h1>
         <p class="text">
-            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
-            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
-            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
-            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
-            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
-            sociosqu.
+            A common pattern among AI models is their tendency to enhance the aesthetic quality of images, even without
+            explicit instructions. For instance, they often apply extra touch-ups to human faces, making the skin appear
+            smoother and more polished. Similarly, the facial features of pets are improved, and even damaged areas,
+            such as eyes, are restored—even when such changes were never requested.
+            For example, when instructed simply to remove extraneous elements (\cref{fig:aesthetic_a}) or image
+            background (\cref{fig:aesthetic_b}), \SeedEdit{} and \gpt{} nonetheless enhance the dog's overall facial
+            features beyond the explicit instructions provided by the user.
+        </p>
+        <p class="text">
+            We report the LAION aesthetic scores for the images in PSR-328 and summarize the results in
+            \cref{fig:aesthetic_c}. The distribution of aesthetic scores confirms that AI models tend to increase
+            overall image aesthetics. On average, AI-edited images have higher scores ($\mu = 5.56$) compared to
+            human-edited images ($\mu = 5.18$) and the original source images ($\mu = 5.32$).
+        </p>
+        <p class="text">
+            Moreover, we compare changes in aesthetic ratings from our human study to examine potential correlations
+            between AI performance (winning or losing) and human preference. A detailed breakdown of human preferences
+            based on variations in aesthetic scores is presented in \cref{fig:aesthetic_d}.
+        </p>
+        <p class="text">
+            We observe that AI-generated edits typically achieve higher aesthetic scores than human edits, regardless of
+            comparison outcome. AI edits become increasingly favored when their aesthetic scores surpass those of human
+            edits (\cref{fig:supp-aesthetic_category_win_rates}). Nonetheless, human raters generally prefer
+            human-generated edits overall, indicating that the LAION aesthetic score alone does not fully align with
+            human preferences. See~\Cref{sec:supp-analysis_of_Aesthetic_Score} for details.
         </p>
     </div>
 
@@ -632,12 +715,25 @@
     <div class="container blog main">
         <h1>AI Models Can Successfully Handle One-Third of All Real-World Requests</h1>
         <p class="text">
-            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
-            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
-            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
-            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
-            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
-            sociosqu.
+            Different image editing requests necessitate varying types and levels of editing depending on the subject
+            and required action, ranging from subtle, precise modifications (e.g., ``remove the
+            quote'' \cref{fig:ai_wins_and_failures}a) to complete transformations (e.g., ``cartoonize this image''
+            \cref{fig:ai_wins_and_failures}f). While our results show human edits are generally preferred, AI models
+            have shown they can handle a subset of these diverse requests at a competitive rate with human editors. This
+            capability raises a question: what is the overall percentage of requests that AI models can already handle?
+        </p>
+        <p class="text">
+            We estimate the overall percentage of real-world image editing requests that AI models can effectively
+            handle by calculating a weighted average based on the distribution of action verbs in our
+            dataset~(\Cref{sec:supp-dataset_stats}). Specifically, we define the effectiveness of AI as the percentage
+            of tasks where AI-generated edits either outperform (win) or perform competitively (tie) compared to human
+            edits. For each verb category (\cref{tab:verb-win-rates}), we multiply the combined AI win and tie rates by
+            the proportion that each verb contributes to the overall dataset (\cref{fig:appendix_12_years_data}):
+            $\sum_{v=1}^{v} D_vAI_v * 100 = 33.35\% $
+            where $D_v$ represents the proportion of dataset requests associated with action verb $v$, and $AI_v$
+            denotes the combined percentage of AI wins and ties for edits corresponding to verb $v$. Based on this
+            calculation, we estimate current AI tools effectively handle about one-third of real-world image editing
+            requests.
         </p>
     </div>
 
