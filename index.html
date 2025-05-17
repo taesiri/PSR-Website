@@ -169,12 +169,12 @@
         <h1 id="sec:intro">Introduction</h1>
 
         <p class="text">
-            GenAI for images has gained enormous research interest [huang2024diffusion] and created a 2023 market of
-            $300M, which is estimated to multiply [marketshare].
-            Specifically, text-based image editing is an increasingly high-demand task [shi2024seededit], especially
+            GenAI for images has gained enormous research interest and created a 2023 market of
+            $300M, which is estimated to multiply.
+            Specifically, text-based image editing is an increasingly high-demand task, especially
             after the recent <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> and <span
                 class="model-style">Gemini-<span class="text-gemini-blue">2.0</span>-Flash</span> image
-            generators [openai20254o].
+            generators.
             However, four important questions remain open:<br />
 
         </p>
@@ -188,8 +188,7 @@
         </p>
 
         <p class="text">
-            Q1 and Q2 are unanswered partly because many prior datasets (e.g., [brooks2023instructpix2pix,
-            shi2021learning, sheynin2024emu, zhao2025ultraedit]) contain made-up requests written by either human
+            Q1 and Q2 are unanswered partly because many prior datasets contain made-up requests written by either human
             annotators or AIs based on the source image or the (source, target image) pair (see <a
                 href="#dataset_comparison_table">Table Dataset Comparison</a>).
             Those request distributions may <em>not</em> reflect the actual editing needs of users as well as the
@@ -197,8 +196,8 @@
             &ldquo;<em>I&apos;d love to see how crazy this could get... Thank you in advance!!</em>&rdquo; in this <a
                 href="https://www.reddit.com/r/PhotoshopRequest/comments/c7f1pa/random_id_love_to_see_how_crazy_this_could_get/">post</a>;
             <a href="#fig:teaser_container">see Figure teaser</a>).
-            On the other hand, some datasets (e.g., [zhang2023magicbrush, brooks2023instructpix2pix, sheynin2024emu,
-            zhao2025ultraedit]) feature images edited by AIs and therefore do not represent the real edits by advanced
+            On the other hand, some datasets feature images edited by AIs and therefore do not represent the real edits
+            by advanced
             photo editors.
         </p>
 
@@ -206,12 +205,11 @@
             We aim to answer these four questions by analyzing totalimagesize tuples of (source image, text request,
             edited image) from the
             <a href="https://www.reddit.com/r/PhotoshopRequest/">/r/PhotoshopRequest</a> (PSR) Reddit channel, which is
-            the <em>largest</em> public online community [feedspotPhotoshopForums,
-            subredditstatsRPhotoshopRequestSubreddit] that shares diverse, everyday image-editing needs with
+            the <em>largest</em> public online community that shares diverse, everyday image-editing needs with
             corresponding edits by PSR wizards (Footnote: Advanced image editors who are granted to handle paid editing
             requests in this particular subreddit.).
             PSR has 1.7M users and receives an average of 141 new requests per day (our statistics for 2025) with a peak
-            as high as 226 per day [medium_photoshoprequest_2025].
+            as high as 226 per day.
         </p>
 
         <p class="text">
@@ -223,21 +221,21 @@
             ratings to compare how 1,644 PSR-wizard edits fare against 2,296 AI edits on the same requests to identify
             areas where AIs perform well and fall short.
             Our work is the first to compare three state-of-the-art (SOTA): <span class="model-style">GPT-<span
-                    class="text-gpt-green">4o</span></span> [openai2025_4oimage], <span class="model-style">Gemini-<span
-                    class="text-gemini-blue">2.0</span>-Flash</span> [geminiImage], and <span
-                class="model-style">SeedEdit</span> [shi2024seededit], as well as 46 other AI models on HuggingFace, for
+                    class="text-gpt-green">4o</span></span>, <span class="model-style">Gemini-<span
+                    class="text-gemini-blue">2.0</span>-Flash</span>, and <span class="model-style">SeedEdit</span>, as
+            well as 46 other AI models on HuggingFace, for
             a total of <strong>49</strong> AI editors.
             Furthermore, to address <strong>Q4</strong>, we compare human ratings against those by <strong>3</strong>
             SOTA vision-language models (VLMs): <span class="model-style">GPT-<span
                     class="text-gpt-green">4o</span></span>, <span class="model-style">o<span
-                    class="text-gpt-green">1</span></span> [openai_o1], and <span class="model-style">Gemini-<span
-                    class="text-gemini-blue">2.0</span>-Flash-Thinking</span> [GoogleDeepMind2024Gemini2].
+                    class="text-gpt-green">1</span></span>, and <span class="model-style">Gemini-<span
+                    class="text-gemini-blue">2.0</span>-Flash-Thinking</span>.
             Our main findings are as follows:
         </p>
 
         <ul class="text">
             <li>66% of the time, human judges still <em>prefer human</em>, PSR-wizard edits over AI edits.</li>
-            <li>While SOTA VLMs are excellent at regular visual tasks [chen2024iqagpt], on image-edit judgment, VLMs can
+            <li>While SOTA VLMs are excellent at regular visual tasks, on image-edit judgment, VLMs can
                 be extremely biased, e.g., <span class="model-style">o<span class="text-headerblue">1</span></span>
                 prefers <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> edits 85% of the
                 time, which is in contrast to human
@@ -613,12 +611,12 @@
         </p>
         <p class="text">
             Analyzing model performance across image editing action verbs shows models
-            struggle with actions like \action{crop} and \action{zoom}, yet perform competitively with humans on tasks
-            such as \action{apply} and \action{merge}. For detailed performance breakdowns, see
-            \Cref{sec:supp-win_rate_breakdown}.
+            struggle with actions like <span class="action-style">crop</span> and <span
+                class="action-style">zoom</span>, yet perform competitively with humans on tasks
+            such as <span class="action-style">apply</span> and <span class="action-style">merge</span>.
         </p>
         <p class="text">
-            Furthermore, we conduct a qualitative analysis (\Cref{sec:supp-why_ai_wins_or_lose}) to identify common
+            Furthermore, we conduct a qualitative analysis to identify common
             patterns in cases where AI edits either succeed or fail. AI-generated edits typically outperform human
             alternatives due to their higher accuracy in reflecting user instructions. This precision in following the
             original request accounts for the majority (72%) of AI wins. In contrast, AI edits often lose because they
@@ -629,10 +627,10 @@
         <p class="text">
             A major issue with the current generation of AI image editing models is how they struggle to preserve the
             identity of people in an image. This problem is more pronounced in <span class="model-style">GPT-<span
-                    class="text-gpt-green">4o</span></span>, as shown in
-            \cref{fig:gpt_facial_fails}. In this example, using <span class="model-style">GPT-<span
-                    class="text-gpt-green">4o</span></span> to make successive edits to an input image of a
-            person results in a final image that loses its similarity to the original person.
+                    class="text-gpt-green">4o</span></span>
+            , as shown in <a href="#gpt_facial_fails">Figure. 3</a>. In this example, using <span
+                class="model-style">GPT-<span class="text-gpt-green">4o</span></span> to make successive edits to an
+            input image of a person results in a final image that loses its similarity to the original person.
         </p>
     </div>
 
@@ -640,17 +638,18 @@
 
 
     <div class="container blog  extra-large gray">
-        <img src="assets/figures/shirtcolor_gpt.png">
+        <img src="assets/figures/shirtcolor_gpt.png" id="gpt_facial_fails">
         <p class="caption">
-            AI can significantly alter both a person's identity and the overall image quality through iterative
+            <strong>Figure. 3:</strong> can significantly alter both a person's identity and the overall image quality
+            through
+            iterative
             image-editing
             requests.
             <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> was repeatedly instructed to
             modify the shirt color, with each step's output serving as the input for
             the next
             iteration.
-            Over iterations, facial identity shifted considerably from the original person (see details
-            in~\Cref{sec:appendix-face_diff}).
+            Over iterations, facial identity shifted considerably from the original person.
         </p>
     </div>
 
@@ -704,34 +703,38 @@
             explicit instructions. For instance, they often apply extra touch-ups to human faces, making the skin appear
             smoother and more polished. Similarly, the facial features of pets are improved, and even damaged areas,
             such as eyes, are restored—even when such changes were never requested.
-            For example, when instructed simply to remove extraneous elements (\cref{fig:aesthetic_a}) or image
-            background (\cref{fig:aesthetic_b}), <span class="model-style">SeedEdit</span> and <span
-                class="model-style">GPT-<span class="text-gpt-green">4o</span></span> nonetheless
+            For example, when instructed simply to remove extraneous elements (<a href="#aesthetics_changes">Figure
+                4-a</a>) or
+            image
+            background (<a href="#aesthetics_changes">Figure 4b</a>), <span class="model-style">SeedEdit</span> and
+            <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> nonetheless
             enhance the dog's overall facial
             features beyond the explicit instructions provided by the user.
         </p>
         <p class="text">
             We report the LAION aesthetic scores for the images in PSR-328 and summarize the results in
-            \cref{fig:aesthetic_c}. The distribution of aesthetic scores confirms that AI models tend to increase
+            (<a href="#aesthetics_changes">Figure
+                4-c</a>). The distribution of aesthetic scores confirms that AI models tend to increase
             overall image aesthetics. On average, AI-edited images have higher scores ($\mu = 5.56$) compared to
             human-edited images ($\mu = 5.18$) and the original source images ($\mu = 5.32$).
         </p>
         <p class="text">
             Moreover, we compare changes in aesthetic ratings from our human study to examine potential correlations
             between AI performance (winning or losing) and human preference. A detailed breakdown of human preferences
-            based on variations in aesthetic scores is presented in \cref{fig:aesthetic_d}.
+            based on variations in aesthetic scores is presented in (<a href="#aesthetics_changes">Figure
+                4-d</a>).
         </p>
         <p class="text">
             We observe that AI-generated edits typically achieve higher aesthetic scores than human edits, regardless of
             comparison outcome. AI edits become increasingly favored when their aesthetic scores surpass those of human
-            edits (\cref{fig:supp-aesthetic_category_win_rates}). Nonetheless, human raters generally prefer
+            edits. Nonetheless, human raters generally prefer
             human-generated edits overall, indicating that the LAION aesthetic score alone does not fully align with
-            human preferences. See~\Cref{sec:supp-analysis_of_Aesthetic_Score} for details.
+            human preferences.
         </p>
     </div>
 
     <div class="container blog  extra-large gray">
-        <img src="assets/figures/aesthetics_changes.svg">
+        <img src="assets/figures/aesthetics_changes.svg" id="aesthetics_changes">
     </div>
 
     <div class="container blog main">
@@ -747,10 +750,10 @@
         <p class="text">
             We estimate the overall percentage of real-world image editing requests that AI models can effectively
             handle by calculating a weighted average based on the distribution of action verbs in our
-            dataset~(\Cref{sec:supp-dataset_stats}). Specifically, we define the effectiveness of AI as the percentage
+            dataset. Specifically, we define the effectiveness of AI as the percentage
             of tasks where AI-generated edits either outperform (win) or perform competitively (tie) compared to human
-            edits. For each verb category (\cref{tab:verb-win-rates}), we multiply the combined AI win and tie rates by
-            the proportion that each verb contributes to the overall dataset (\cref{fig:appendix_12_years_data}):
+            edits. For each verb category, we multiply the combined AI win and tie rates by
+            the proportion that each verb contributes to the overall dataset:
             $\sum_{v=1}^{v} D_vAI_v * 100 = 33.35% $
             where $D_v$ represents the proportion of dataset requests associated with action verb $v$, and $AI_v$
             denotes the combined percentage of AI wins and ties for edits corresponding to verb $v$. Based on this
@@ -778,9 +781,6 @@
             to their absence from our human analysis.
         </p>
     </div>
-
-
-
 
 
     <!-- 
