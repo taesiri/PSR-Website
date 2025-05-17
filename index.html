@@ -20,7 +20,7 @@
     <meta name="twitter:site" content="@your_twitter_id">
     <meta name="twitter:description"
         content="Project page for the paper: Understanding Generative AI Capabilities in Everyday Image Editing Tasks">
-    <meta name="twitter:image:src" content="assets/figures/E2136364-47E7-4088-BA6B-AEEE9C07A144.png">
+    <meta name="twitter:image:src" content="assets/figures/B25ECE26-7400-4612-AD3D-AC097C3856AA.png">
 
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
     <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
@@ -48,6 +48,29 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .table-wrapper {
+            overflow-x: auto;
+            /* Add scrollbar only if needed */
+            max-width: 100%;
+        }
+
+        .table-wrapper table {
+            table-layout: fixed;
+            width: 100%;
+            /* Ensure table uses the available width */
+        }
+
+        .table-wrapper th,
+        .table-wrapper td {
+            word-break: break-word;
+            /* Allow long words to break and wrap */
+            white-space: normal !important;
+            /* Override any conflicting white-space properties */
+            font-size: 0.8rem;
+            /* Added to reduce font size */
+        }
+    </style>
 </head>
 
 <body>
@@ -90,7 +113,7 @@
                         AI editors perform worse on low-creativity requests that require precise editing than on more
                         open-ended tasks. They often struggle to preserve the identity of people and animals, and
                         frequently make non-requested touch-ups. On the other side of the table, VLM judges (e.g., <span
-                            class="model-style"><span class="text-headerblue">o1</span></span>))
+                            class="model-style"><span class="text-headerblue">o1</span></span>)
                         perform differently from human judges and may prefer AI edits more than human edits.
                     </p>
                     <!-- Using FontAwesome Pro -->
@@ -109,15 +132,15 @@
                             <a href="https://arxiv.org" class="button icon"
                                 style="background-color: rgba(255, 255, 255, 0.2)"> Paper <i
                                     class="fa-solid fa-book-open"></i></a> &nbsp;&nbsp;
-                            <a href="https://github.com" class="button icon"
-                                style="background-color: rgba(255, 255, 255, 0.2)">Code <i
-                                    class="fa-solid fa-code"></i></a> &nbsp;&nbsp;
-                            <a href="https://www.microsoft.com/en-gb/microsoft-365/powerpoint" class="button icon"
+                            <a href="https://huggingface.co/collections/taesiri/psr-6827bdeefff0ed2b7206f740"
+                                class="button icon" style="background-color: rgba(255, 255, 255, 0.2)">Dataset <i
+                                    class="fa-solid fa-database"></i></a> &nbsp;&nbsp;
+                            <!-- <a href="https://www.microsoft.com/en-gb/microsoft-365/powerpoint" class="button icon"
                                 style="background-color: rgba(255, 255, 255, 0.2);">Slides <i
                                     class="fa-regular fa-file-powerpoint"></i></a> &nbsp;&nbsp;
                             <a href="https://huggingface.co/spaces/" class="button icon"
                                 style="background-color: rgba(255, 255, 255, 0.2)">Demo <i
-                                    class="fa-solid fa-laptop-code"></i></a>
+                                    class="fa-solid fa-laptop-code"></i></a> -->
                         </div>
                     </div>
                 </div>
@@ -128,154 +151,114 @@
             </div>
 
             <div class="blog-cover">
-                <img class="foreground" src="assets/figures/E2136364-47E7-4088-BA6B-AEEE9C07A144.png">
-                <img class="background" src="assets/figures/E2136364-47E7-4088-BA6B-AEEE9C07A144.png">
+                <img class="foreground" src="assets/figures/B25ECE26-7400-4612-AD3D-AC097C3856AA.png">
+                <img class="background" src="assets/figures/B25ECE26-7400-4612-AD3D-AC097C3856AA.png">
             </div>
         </div>
     </div>
 
+    <div class="container blog main">
+        <h1>tldr</h1>
+        <p class="text">
+            We find that GenAI can satisfy 33.35% of the requests, while 66.65% of the existing requests, PSR wizards
+        </p>
+    </div>
 
     <div class="container blog main first" id="blog-main">
-        <h1>
-            Introduction
-        </h1>
-        <p class='text'>
-            Lorem ipsum odor amet, consectetuer adipiscing elit. Urna non ligula sed ante ultricies. Nam nam tortor elit
-            turpis fermentum praesent. Tristique porttitor sodales rhoncus duis tellus mus vivamus lacus. Nam platea
-            lectus aliquam placerat; quis dignissim nisi ornare. Habitant himenaeos adipiscing dictum fringilla metus.
+        <h1 id="sec:intro">Introduction</h1>
+
+        <p class="text">
+            GenAI for images has gained enormous research interest [huang2024diffusion] and created a 2023 market of
+            $300M, which is estimated to multiply [marketshare].
+            Specifically, text-based image editing is an increasingly high-demand task [shi2024seededit], especially
+            after the recent <span class="model-style">GPT</span> and <span class="model-style">Gemini Pro</span> image
+            generators [openai20254o].
+            However, four important questions remain open:<br />
+            <strong>Q1:</strong> What are the <em>real</em> everyday image editing requests and needs of users?<br />
+            <strong>Q2:</strong> According to human judgment, what % of such requests can be satisfied by existing
+            AIs?<br />
+            <strong>Q3:</strong> What are the improvement areas for AI editors compared to human editors?<br />
+            <strong>Q4:</strong> Are vision language models (VLMs) judging AI-edited images similarly to human judges?
         </p>
 
         <p class="text">
-            Sagittis donec nibh etiam leo eget iaculis proin. Dapibus morbi vitae ad vestibulum montes odio varius.
-            Ullamcorper finibus nibh suscipit libero velit suspendisse. Potenti potenti risus integer libero semper
-            potenti vivamus. Libero cras lectus netus faucibus nisl. Congue aliquet congue ante netus eu, vestibulum
-            arcu. Scelerisque tempor taciti senectus mus penatibus condimentum consequat in. Tempor conubia molestie
-            tristique; orci taciti augue. Justo ultrices consequat hac vivamus proin sodales.
+            Q1 and Q2 are unanswered partly because many prior datasets (e.g., [brooks2023instructpix2pix,
+            shi2021learning, sheynin2024emu, zhao2025ultraedit]) contain made-up requests written by either human
+            annotators or AIs based on the source image or the (source, target image) pair (see <a
+                href="#tab:dataset_comparison">Table dataset_comparison</a>).
+            Those request distributions may <em>not</em> reflect the actual editing needs of users as well as the
+            challenges posed by the real requests, which may have typos, distraction or ambiguity (e.g.,
+            &ldquo;<em>I&apos;d love to see how crazy this could get... Thank you in advance!!</em>&rdquo; in this <a
+                href="https://www.reddit.com/r/PhotoshopRequest/comments/c7f1pa/random_id_love_to_see_how_crazy_this_could_get/">post</a>;
+            <a href="#fig:teaser_container">see Figure teaser</a>).
+            On the other hand, some datasets (e.g., [zhang2023magicbrush, brooks2023instructpix2pix, sheynin2024emu,
+            zhao2025ultraedit]) feature images edited by AIs and therefore do not represent the real edits by advanced
+            photo editors.
         </p>
-    </div>
 
-    <div class="container blog main gray">
-        <img src="clarity/images/vit.png">
-        <p class="caption">
-            Erat id non venenatis nullam leo nisl risus fames. Quis montes tortor aenean posuere non. Maximus dui cras
-            enim tristique; ipsum pellentesque ut. Mauris hac felis elit scelerisque nascetur risus adipiscing ultrices.
-            Quis augue pulvinar laoreet facilisis vel. Pharetra blandit nunc id, sem cubilia sit porttitor. Montes
-            hendrerit vestibulum vulputate tincidunt facilisis metus. Interdum mi vivamus nunc consectetur adipiscing;
-            aptent semper dictum.
-        </p>
-    </div>
-
-    <div class="container blog main">
-        <h1>Results</h1>
         <p class="text">
-            Arcu imperdiet nunc, dignissim ornare arcu nam eros cras venenatis. Non volutpat parturient luctus eros
-            litora natoque; elementum dui. Nulla cubilia et nascetur dictum nisi phasellus. Natoque himenaeos porta
-            vulputate interdum id mollis. Fames diam integer semper ligula per. Sapien ex magnis pellentesque neque
-            rhoncus conubia. Purus torquent nunc ligula auctor cras pharetra. Porttitor vulputate dis ante suspendisse a
-            iaculis massa sagittis.
+            We aim to answer these four questions by analyzing totalimagesize tuples of (source image, text request,
+            edited image) from the
+            <a href="https://www.reddit.com/r/PhotoshopRequest/">/r/PhotoshopRequest</a> (PSR) Reddit channel, which is
+            the <em>largest</em> public online community [feedspotPhotoshopForums,
+            subredditstatsRPhotoshopRequestSubreddit] that shares diverse, everyday image-editing needs with
+            corresponding edits by PSR wizards (Footnote: Advanced image editors who are granted to handle paid editing
+            requests in this particular subreddit.).
+            PSR has 1.7M users and receives an average of 141 new requests per day (our statistics for 2025) with a peak
+            as high as 226 per day [medium_photoshoprequest_2025].
         </p>
-    </div>
 
-    <div class="container blog extra-large gray">
-        <div class="slide-menu">
-            <ul class="dots" id="slide-menu">
-                <li class="dot active"></li>
-                <li class="dot"></li>
-                <li class="dot"></li>
-            </ul>
-        </div>
-
-        <div class="slide-content" , style="display: block;">
-            <div class="columns-4">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-            </div>
-            <p class="caption">
-                Nulla quis porttitor varius phasellus dolor curae primis. Suscipit sit adipiscing nibh justo hac. Turpis
-                massa ridiculus sit, finibus quis litora sagittis torquent. Dignissim suscipit quam curabitur sit velit,
-                rhoncus tincidunt purus? At netus efficitur penatibus purus amet urna etiam. Leo neque ligula varius
-                lacinia torquent vehicula. Tempus non mauris vel placerat natoque.
-            </p>
-        </div>
-
-        <div class="slide-content" , style="display: none;">
-            <div class="columns-6">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-            </div>
-            <p class="caption">
-                Nulla quis porttitor varius phasellus dolor curae primis. Suscipit sit adipiscing nibh justo hac. Turpis
-                massa ridiculus sit, finibus quis litora sagittis torquent. Dignissim suscipit quam curabitur sit velit,
-                rhoncus tincidunt purus? At netus efficitur penatibus purus amet urna etiam. Leo neque ligula varius
-                lacinia torquent vehicula. Tempus non mauris vel placerat natoque.
-            </p>
-        </div>
-
-        <div class="slide-content" , style="display: none;">
-            <div class="columns-8">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-                <img src="https://clickprops.co.uk/wp-content/uploads/2022/05/PP15PS-California-Blue.jpg">
-            </div>
-            <p class="caption">
-                Nulla quis porttitor varius phasellus dolor curae primis. Suscipit sit adipiscing nibh justo hac. Turpis
-                massa ridiculus sit, finibus quis litora sagittis torquent. Dignissim suscipit quam curabitur sit velit,
-                rhoncus tincidunt purus? At netus efficitur penatibus purus amet urna etiam. Leo neque ligula varius
-                lacinia torquent vehicula. Tempus non mauris vel placerat natoque.
-            </p>
-        </div>
-    </div>
-
-    <div class="container blog main">
-        <h1>Additional Analysis</h1>
-        <h2>Observation 1</h2>
         <p class="text">
-            Lorem ipsum odor amet, consectetuer adipiscing elit. Himenaeos sociosqu facilisi ante; cubilia sociosqu
-            magna libero. Dignissim vehicula felis taciti sollicitudin quam ligula a, vivamus porta. Tellus facilisi
-            pharetra non posuere a sapien. Sagittis felis lectus ac interdum pretium sit himenaeos.
-        </p>
-        <ol>
-            <li>
-                <p class="text">Conubia aliquet semper inceptos ultricies vel metus fusce litora. </p>
-            </li>
-            <li>
-                <p class="text">Ultricies dis vehicula non lobortis hac sagittis urna dignissim ex.
-                </p>
-            </li>
-        </ol>
-
-        <h2>Observation 2</h2>
-        <p class="text">
-            Lorem ipsum odor amet, consectetuer adipiscing elit. Himenaeos sociosqu facilisi ante; cubilia sociosqu
-            magna libero. Dignissim vehicula felis taciti sollicitudin quam ligula a, vivamus porta. Tellus facilisi
-            pharetra non posuere a sapien. Sagittis felis lectus ac interdum pretium sit himenaeos.
+            To answer <strong>Q1</strong>, <strong>Q2</strong>, and <strong>Q3</strong>, our closed-loop study:
+            <strong>(a)</strong> analyzes 305k tuples, i.e., datasetsize <em>unique</em> requests &times; 3.67
+            human-edited images per request;
+            <strong>(b)</strong> sends all (request, source image) pairs to image-editing models to collect AI edits;
+            <strong>(c)</strong> performs a human study over a set of 328 requests (PSR-328) to collect over 4.5k
+            ratings to compare how 1,644 PSR-wizard edits fare against 2,296 AI edits on the same requests to identify
+            areas where AIs perform well and fall short.
+            Our work is the first to compare three state-of-the-art (SOTA): <span class="model-style">GPT-<span
+                    class="text-gpt-green">4o</span></span> [openai2025_4oimage], <span class="model-style">Gemini-<span
+                    class="text-gemini-blue">Flash</span></span> [geminiImage], and <span
+                class="model-style">SeedEdit</span> [shi2024seededit], as well as 46 other AI models on HuggingFace, for
+            a total of <strong>49</strong> AI editors.
+            Furthermore, to address <strong>Q4</strong>, we compare human ratings against those by <strong>3</strong>
+            SOTA vision-language models (VLMs): <span class="model-style">GPT</span>, <span class="model-style"><span
+                    class="text-headerblue">o1</span></span> [openai_o1], and <span class="model-style">Gemini-<span
+                    class="text-gemini-blue">Flash-Thinking</span></span> [GoogleDeepMind2024Gemini2].
+            Our main findings are as follows:
         </p>
 
-        <ul>
-            <li>
-                <p class="text">Conubia aliquet semper inceptos ultricies vel metus fusce litora. </p>
-            </li>
-            <li>
-                <p class="text">Ultricies dis vehicula non lobortis hac sagittis urna dignissim ex.
-                </p>
-            </li>
+        <ul class="text">
+            <li>66% of the time, human judges still <em>prefer human</em>, PSR-wizard edits over AI edits.</li>
+            <li>While SOTA VLMs are excellent at regular visual tasks [chen2024iqagpt], on image-edit judgment, VLMs can
+                be extremely biased, e.g., <span class="model-style"><span class="text-headerblue">o1</span></span>
+                prefers <span class="model-style">GPT</span> edits 85% of the time, which is in contrast to human
+                judgment.</li>
+            <li>AIs often add additional touches, which improve the aesthetic of the image and sometimes win votes even
+                when such touches are not requested by users.</li>
+            <li>GenAI can satisfy 33.35% of the requests, while 66.65% of the existing requests, PSR wizards still
+                outperform GenAI models.</li>
         </ul>
+
+
+    </div>
+
+
+    <div class="container blog  extra-large gray">
+        <img src="assets/figures/teaser_human.svg">
+        <p class="caption">
+            We propose PSR—the largest dataset to date of real-world image-editing requests and their
+            corresponding human-made edits.
+            PSR enables the community (and our work) to identify the types of requests that can be automated using
+            existing AIs and those that need improvement.
+            PSR is the first dataset to tag all requests with WordNet subjects, real-world editing actions, and
+            creativity levels.
+        </p>
     </div>
 
 
     <div class="container blog main">
-        <h1>Conclusion</h1>
+        <h1>PSR Dataset Construction</h1>
         <p class="text">
             Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
             dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
@@ -286,6 +269,403 @@
         </p>
     </div>
 
+
+    <div class="container blog extra-large gray">
+        <h1>Dataset Comparison</h1>
+        <div class="table-wrapper">
+
+            <table border="1" cellpadding="4" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Dataset</th>
+                        <th>Year</th>
+                        <th>No. of Requests</th>
+                        <th>No. of Edits</th>
+                        <th>Source Image</th>
+                        <th>Edit Generator</th>
+                        <th>Request Writer</th>
+                        <th>Requests Based On</th>
+                        <th>Creativity Low</th>
+                        <th>Creativity Med</th>
+                        <th>Creativity High</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>IER</td>
+                        <td>2019</td>
+                        <td>4k</td>
+                        <td><span style="color:gray;">4k</span></td>
+                        <td>reddit</td>
+                        <td>human &#10003;</td>
+                        <td>human</td>
+                        <td>reddit &#10003;</td>
+                        <td>78%</td>
+                        <td>15%</td>
+                        <td>7%</td>
+                    </tr>
+
+                    <tr>
+                        <td>GIER</td>
+                        <td>2020</td>
+                        <td>6k</td>
+                        <td><span style="color:gray;">6k</span></td>
+                        <td>reddit</td>
+                        <td>human &#10003;</td>
+                        <td>human</td>
+                        <td>reddit &#10003;</td>
+                        <td>63%</td>
+                        <td>34%</td>
+                        <td>3%</td>
+                    </tr>
+
+                    <tr>
+                        <td>MA5k-Req</td>
+                        <td>2021</td>
+                        <td>24k</td>
+                        <td><span style="color:gray;">24k</span></td>
+                        <td>real</td>
+                        <td>Ps</td>
+                        <td>Amazon MT</td>
+                        <td>image pairs</td>
+                        <td>100%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+
+                    <tr>
+                        <td>InstructPix2Pix</td>
+                        <td>2023</td>
+                        <td>454k</td>
+                        <td><span style="color:gray;">454k</span></td>
+                        <td>SD</td>
+                        <td>SD</td>
+                        <td>GPT-3</td>
+                        <td>image pairs</td>
+                        <td>12%</td>
+                        <td>44%</td>
+                        <td>42%</td>
+                    </tr>
+
+                    <tr>
+                        <td>MagicBrush</td>
+                        <td>2023</td>
+                        <td>10k</td>
+                        <td><span style="color:gray;">10k</span></td>
+                        <td>MS COCO</td>
+                        <td>DALL-E 2</td>
+                        <td>Amazon MT</td>
+                        <td>source image</td>
+                        <td>62%</td>
+                        <td>25%</td>
+                        <td>12%</td>
+                    </tr>
+
+                    <tr>
+                        <td>HIVE</td>
+                        <td>2024</td>
+                        <td>1.1M</td>
+                        <td><span style="color:gray;">1.1M</span></td>
+                        <td>SD</td>
+                        <td>SD</td>
+                        <td>BLIP</td>
+                        <td>image pairs</td>
+                        <td>48%</td>
+                        <td>30%</td>
+                        <td>22%</td>
+                    </tr>
+
+                    <tr>
+                        <td>EmuEdit</td>
+                        <td>2024</td>
+                        <td>10M</td>
+                        <td><span style="color:gray;">10M</span></td>
+                        <td>Emu</td>
+                        <td>Emu</td>
+                        <td>Llama 2</td>
+                        <td>source image & task</td>
+                        <td>54%</td>
+                        <td>20%</td>
+                        <td>26%</td>
+                    </tr>
+
+                    <tr>
+                        <td>AURORA</td>
+                        <td>2025</td>
+                        <td>280k</td>
+                        <td><span style="color:gray;">280k</span></td>
+                        <td>mixed</td>
+                        <td>mixed</td>
+                        <td>GPT-4o</td>
+                        <td>image pairs</td>
+                        <td>96%</td>
+                        <td>4%</td>
+                        <td>0%</td>
+                    </tr>
+
+                    <tr>
+                        <td>UltraEdit</td>
+                        <td>2025</td>
+                        <td>4M</td>
+                        <td><span style="color:gray;">4M</span></td>
+                        <td>MS COCO</td>
+                        <td>SD</td>
+                        <td>GPT-4o, human</td>
+                        <td>source image</td>
+                        <td>43%</td>
+                        <td>21%</td>
+                        <td>36%</td>
+                    </tr>
+
+                    <tr>
+                        <td>RealEdit</td>
+                        <td>2025</td>
+                        <td>57k</td>
+                        <td>94k</td>
+                        <td>reddit</td>
+                        <td>human &#10003;</td>
+                        <td>human</td>
+                        <td>reddit &#10003;</td>
+                        <td>58%</td>
+                        <td>36%</td>
+                        <td>6%</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>PSR (ours)</strong></td>
+                        <td>2025</td>
+                        <td>83k</td>
+                        <td>305k</td>
+                        <td>reddit</td>
+                        <td>human &#10003;</td>
+                        <td>human</td>
+                        <td>reddit &#10003;</td>
+                        <td>56%</td>
+                        <td>28%</td>
+                        <td>16%</td>
+                    </tr>
+
+                    <tr>
+                        <td>PSR-328 (ours)</td>
+                        <td>2025</td>
+                        <td>328</td>
+                        <td>3.9k</td>
+                        <td>reddit</td>
+                        <td>human, AIs &#10003;</td>
+                        <td>human</td>
+                        <td>reddit &#10003;</td>
+                        <td>33%</td>
+                        <td>33%</td>
+                        <td>33%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+        </p>
+    </div>
+
+
+
+
+
+    <div class="container blog main">
+        <h1 id="sec:exp_setup">Experiment Setup</h1>
+        <p class="text">
+            We conduct a series of studies comparing AI-generated edits with human edits to understand human preferences
+            and to determine whether automated metrics can serve as reliable proxies for these preferences.
+        </p>
+
+        <h2>AI editors:</h2>
+        <p class="text">
+            We process each request using three generalist SOTA image editing tools: <span
+                class="model-style">SeedEdit</span> [shi2024seededit], <span class="model-style">Gemini-<span
+                    class="text-gemini-blue">Flash</span></span> (Image Generation Experimental) [geminiImage], and
+            <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> [openai2025_4oimage].<sup><a
+                    href="#fn1_exp" id="fnref1_exp" title="Footnote">1</a></sup>
+            For each request, we generate two images using both the original instruction (OI) provided by the user and a
+            simplified instruction (SI) generated by <span class="model-style">GPT-mini</span>. Since user-written
+            instructions often include unnecessary details, we use <span class="model-style">GPT-mini</span> to refine
+            them, focusing solely on the core image editing task.
+        </p>
+        <p class="text">
+            Additionally, for each request, we generate three AI-based image edits using
+            <strong>[number_of_models]</strong> off-the-shelf image editing models hosted on Hugging Face Spaces
+            [huggingface_spaces] (see <a href="#table:supp-edits-per-model">supplementary table for models</a> for a
+            list of models).
+        </p>
+
+        <h2>PSR-328 dataset:</h2>
+        <p class="text">
+            Via stratified sampling, we select a random PSR subset that has almost the same amount of images in three
+            levels of creativity groups (114 low, 101 medium, and 113 high).
+            On average, each request is edited by an average of <strong>five</strong> Reddit human editors, resulting in
+            a total of 1,644 human edits.
+            We also generate 7 different AI edits per request.
+            In total, our human study has 10,405 unique 4-tuples (source image, request, AI edit, human edit) for
+            evaluation&mdash;substantially larger than prior studies [basu2023editval, wang2023imagen, jiang2025genai],
+            while keeping the human annotation effort manageable.
+        </p>
+
+        <h2>Human study:</h2>
+        <p class="text">
+            We conduct a comparative evaluation study to assess whether AI-generated edits or those created by Reddit
+            users better satisfy original image editing requests. To ensure unbiased evaluation, we present randomly
+            paired AI and human edits in a blind setting to human raters who then vote on which edit best fulfills the
+            given request. Further details on the user interface, including the introduction screen and a sample
+            selection task, are provided in <a href="#sec:supp-human-study">supplementary section on human study</a>.
+        </p>
+
+        <h2>Automated metrics and VLM judges:</h2>
+        <p class="text">
+            We use two automated evaluation methods to complement our human study: LAION <em>Aesthetic Score</em>
+            [hentschel2022clip, wang2023exploring, wu2024q] and <em>VLM-as-a-Judge</em> [lee2024prometheus,
+            chen2024iqagpt, xiong2024llava, chen2024mllm]. The Aesthetic Score quantifies visual appeal based on
+            large-scale human preference data, while VLM-as-a-Judge leverages VLMs to provide evaluative feedback on
+            images, with reasoning capabilities that articulate specific visual qualities and explain judgments.
+            Both metrics serve as proxies for human judgment, enabling scalable assessment of AI-generated and
+            human-edited images.
+            We use LAION's Aesthetic Score Predictor [schuhmann2023improved] for calculating aesthetic metrics, and
+            <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> [openai2024gpt4o], <span
+                class="model-style"><span class="text-headerblue">o1</span></span> [openai_o1], and <span
+                class="model-style">Gemini-<span class="text-gemini-blue">Flash-Thinking</span></span>
+            [GoogleDeepMind2024Gemini2] as the VLM models for judgment tasks.
+        </p>
+        <div class="footnotes">
+            <hr>
+            <ol>
+                <li id="fn1_exp">Due to access constraints and model safeguards, some edits from <span
+                        class="model-style">GPT-<span class="text-gpt-green">4o</span></span>, <span
+                        class="model-style">SeedEdit</span>, and <span class="model-style">Gemini-<span
+                            class="text-gemini-blue">Flash</span></span> are not available. <a href="#fnref1_exp"
+                        title="Return to text">&#8617;</a></li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="container blog main">
+        <h1>Results</h1>
+        <p class="text">
+            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
+            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
+            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
+            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
+            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
+            sociosqu.
+        </p>
+    </div>
+
+
+
+
+
+
+
+    <div class="container blog  extra-large gray">
+        <img src="assets/figures/main_table.svg">
+        <p class="caption">
+
+        </p>
+    </div>
+
+
+    <div class="container blog main">
+        <h1>Human Edits Are Strongly Preferred by Human Raters</h1>
+        <p class="text">
+            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
+            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
+            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
+            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
+            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
+            sociosqu.
+        </p>
+    </div>
+
+
+
+
+    <div class="container blog  extra-large gray">
+        <img src="assets/figures/shirtcolor_gpt.png">
+        <p class="caption">
+            AI can significantly alter both a person's identity and the overall image quality through iterative
+            image-editing
+            requests.
+            \gpt{} was repeatedly instructed to modify the shirt color, with each step's output serving as the input for
+            the next
+            iteration.
+            Over iterations, facial identity shifted considerably from the original person (see details
+            in~\Cref{sec:appendix-face_diff}).
+        </p>
+    </div>
+
+
+    <div class="container blog main">
+        <h1>VLM-as-a-Judge Is a Poor Proxy for Human Preferences</h1>
+        <p class="text">
+            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
+            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
+            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
+            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
+            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
+            sociosqu.
+        </p>
+    </div>
+
+    <div class="container blog main">
+        <h1>AI Models Tend To Improve Aesthetics Even When Not Requested</h1>
+        <p class="text">
+            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
+            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
+            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
+            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
+            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
+            sociosqu.
+        </p>
+    </div>
+
+    <div class="container blog  extra-large gray">
+        <img src="assets/figures/aesthetics_changes.svg">
+    </div>
+
+    <div class="container blog main">
+        <h1>AI Models Can Successfully Handle One-Third of All Real-World Requests</h1>
+        <p class="text">
+            Per aptent diam; ut in mauris ultricies torquent conubia dolor. Aliquet venenatis sapien, dictum finibus ad
+            dui. Finibus sollicitudin nullam consectetur malesuada molestie semper dolor. Platea eget hac cursus aptent
+            maecenas penatibus vulputate. Ligula libero torquent sit per praesent praesent. Sodales risus mattis enim
+            odio risus tristique. Dapibus vivamus quis scelerisque sollicitudin penatibus placerat erat. Ante aliquet
+            vel; morbi quisque leo morbi. Ac sollicitudin imperdiet lacus integer cursus metus parturient euismod
+            sociosqu.
+        </p>
+    </div>
+
+
+    <div class="container blog main">
+        <h1>Conclusion</h1>
+        <p class="text">
+            In this study, we compared generative AI edits with human edits to understand the gap between the current
+            capabilities of AI models and actual user needs.
+            Current AI tools excel in specific tasks such as object removal and outpainting, effectively extending
+            images and filling in missing details. However,
+            in real-world scenarios, current generation models can adequately fulfill only about one-third of user
+            editing requests. Their main constraints stem from their tendency to introduce unintended modifications
+            beyond the targeted editing region and inadvertently altering essential characteristics, such as the
+            identity of individuals.
+        </p>
+        <p class="text">
+            Our dataset annotation and taxonomy generation rely on language models, potentially introducing biases and
+            inaccuracies. Additionally, certain AI image editing models were inaccessible during our evaluation, leading
+            to their absence from our human analysis.
+        </p>
+    </div>
+
+
+
+
+
+    <!-- 
     <div class="container blog main">
         <h1>Citation</h1>
         <p class="text">
@@ -299,7 +679,7 @@
     journal={nature},
     year={2048}
 }</code></pre>
-    </div>
+    </div> -->
 
     <!-- Footer Page -->
     <footer>
