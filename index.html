@@ -113,7 +113,8 @@
                         AI editors perform worse on low-creativity requests that require precise editing than on more
                         open-ended tasks. They often struggle to preserve the identity of people and animals, and
                         frequently make non-requested touch-ups. On the other side of the table, VLM judges (e.g., <span
-                            class="model-style"><span class="text-headerblue">o1</span></span>)
+                            class="model-style"><span style="color: black;">o</span><span
+                                class="text-gpt-green">1</span></span>)
                         perform differently from human judges and may prefer AI edits more than human edits.
                     </p>
                     <!-- Using FontAwesome Pro -->
@@ -171,9 +172,14 @@
             GenAI for images has gained enormous research interest [huang2024diffusion] and created a 2023 market of
             $300M, which is estimated to multiply [marketshare].
             Specifically, text-based image editing is an increasingly high-demand task [shi2024seededit], especially
-            after the recent <span class="model-style">GPT</span> and <span class="model-style">Gemini Pro</span> image
+            after the recent <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> and <span
+                class="model-style">Gemini-<span class="text-gemini-blue">2.0</span>-Flash</span> image
             generators [openai20254o].
             However, four important questions remain open:<br />
+
+        </p>
+
+        <p>
             <strong>Q1:</strong> What are the <em>real</em> everyday image editing requests and needs of users?<br />
             <strong>Q2:</strong> According to human judgment, what % of such requests can be satisfied by existing
             AIs?<br />
@@ -185,7 +191,7 @@
             Q1 and Q2 are unanswered partly because many prior datasets (e.g., [brooks2023instructpix2pix,
             shi2021learning, sheynin2024emu, zhao2025ultraedit]) contain made-up requests written by either human
             annotators or AIs based on the source image or the (source, target image) pair (see <a
-                href="#tab:dataset_comparison">Table dataset_comparison</a>).
+                href="#dataset_comparison_table">Table Dataset Comparison</a>).
             Those request distributions may <em>not</em> reflect the actual editing needs of users as well as the
             challenges posed by the real requests, which may have typos, distraction or ambiguity (e.g.,
             &ldquo;<em>I&apos;d love to see how crazy this could get... Thank you in advance!!</em>&rdquo; in this <a
@@ -222,7 +228,8 @@
                 class="model-style">SeedEdit</span> [shi2024seededit], as well as 46 other AI models on HuggingFace, for
             a total of <strong>49</strong> AI editors.
             Furthermore, to address <strong>Q4</strong>, we compare human ratings against those by <strong>3</strong>
-            SOTA vision-language models (VLMs): <span class="model-style">GPT</span>, <span class="model-style"><span
+            SOTA vision-language models (VLMs): <span class="model-style">GPT-<span
+                    class="text-gpt-green">4o</span></span>, <span class="model-style"><span
                     class="text-headerblue">o1</span></span> [openai_o1], and <span class="model-style">Gemini-<span
                     class="text-gemini-blue">Flash-Thinking</span></span> [GoogleDeepMind2024Gemini2].
             Our main findings are as follows:
@@ -232,7 +239,8 @@
             <li>66% of the time, human judges still <em>prefer human</em>, PSR-wizard edits over AI edits.</li>
             <li>While SOTA VLMs are excellent at regular visual tasks [chen2024iqagpt], on image-edit judgment, VLMs can
                 be extremely biased, e.g., <span class="model-style"><span class="text-headerblue">o1</span></span>
-                prefers <span class="model-style">GPT</span> edits 85% of the time, which is in contrast to human
+                prefers <span class="model-style">GPT-<span class="text-gpt-green">4o</span></span> edits 85% of the
+                time, which is in contrast to human
                 judgment.</li>
             <li>AIs often add additional touches, which improve the aesthetic of the image and sometimes win votes even
                 when such touches are not requested by users.</li>
@@ -270,7 +278,7 @@
     </div>
 
 
-    <div class="container blog extra-large gray">
+    <div class="container blog extra-large gray" id="dataset_comparison_table">
         <h1>Dataset Comparison</h1>
         <div class="table-wrapper">
 
@@ -576,23 +584,27 @@
         <p class="text">
             We collect a total of 4,359 human votes from 122 different users, and \cref{tab:main_results} summarizes the
             preferences based on the collected votes.
-            Human raters prefer human edits in 66.0\% of cases, while AI edits are preferred in only 25.8\% of cases.
+            Human raters prefer human edits in 66.0% of cases, while AI edits are preferred in only 25.8% of cases.
         </p>
         <p class="text">
-            Within the <span style="background-color: lightblue; padding: 1px 3px; border-radius: 3px;">model
+            Within the <span style="background-color: rgb(245, 245, 245); padding: 1px 3px; border-radius: 3px;">model
                 groups</span>, the preference for human edits remains consistent across different models, with
-            preference rates ranging from 53.6\% to 73.2\% in favor of human edits. \SeedEdit{} \seedlogo achieves the
-            highest overall preference win rate at 37.8\%, followed by \gpt{}, with a win rate of 32.8\%.
+            preference rates ranging from 53.6% to 73.2% in favor of human edits. <span
+                class="model-style">SeedEdit</span> achieves the
+            highest overall preference win rate at 37.8%, followed by <span class="model-style">GPT-<span
+                    class="text-gpt-green">4o</span></span>, with a win rate of 32.8%.
         </p>
         <p class="text">
             Breaking down the ratings by creativity still shows a preference for human edits across all three creativity
             groups. Although human edits are consistently preferred, the gap between human and AI performance is smaller
-            for <span style="background-color: #E6E6FA; padding: 1px 3px; border-radius: 3px;">high-creativity</span>
-            requests (60.9\% vs.\ 30.7\%) compared to <span
-                style="background-color: #FFF0F5; padding: 1px 3px; border-radius: 3px;">medium-creativity</span>
-            (67.6\% vs.\ 25.3\%) and <span
-                style="background-color: #F0FFF0; padding: 1px 3px; border-radius: 3px;">low-creativity</span> requests
-            (70.1\% vs.\ 21.1\%).
+            for <span
+                style="background-color: rgb(210, 255, 210); padding: 1px 3px; border-radius: 3px;">high-creativity</span>
+            requests (60.9% vs. 30.7%) compared to <span
+                style="background-color: rgb(255, 255, 204); padding: 1px 3px; border-radius: 3px;">medium-creativity</span>
+            (67.6% vs. 25.3%) and <span
+                style="background-color: rgb(255, 239, 213); padding: 1px 3px; border-radius: 3px;">low-creativity</span>
+            requests
+            (70.1% vs. 21.1%).
             We hypothesize that this is because, in high-creativity scenarios, human evaluators tend to prioritize
             originality over detail—unlike in low- or medium-creativity requests.
         </p>
@@ -656,13 +668,14 @@
         </p>
         <p class="text">
             When examining VLM ratings by individual <span
-                style="background-color: #E6E6FA; padding: 1px 3px; border-radius: 3px;">model groups</span>, we observe
+                style="background-color: rgb(245, 245, 245); padding: 1px 3px; border-radius: 3px;">model groups</span>,
+            we observe
             a clear preference among VLMs for edits produced by <span class="model-style">SeedEdit</span> and <span
-                class="model-style">GPT</span>.
+                class="model-style">GPT-<span class="text-gpt-green">4o</span></span>.
             Notably, <span class="model-style"><span class="text-headerblue">o1</span></span> selects edits from <span
-                class="model-style">GPT</span> 83.9% of the time. Conversely, for edits generated by <span
-                class="model-style">Gemini-<span class="text-gemini-blue">Flash</span></span> or <span
-                class="model-style">Hugging Face models</span>, VLMs generally favor human-made edits. Despite this,
+                class="model-style">GPT-<span class="text-gpt-green">4o</span></span> 83.9% of the time. Conversely, for
+            edits generated by <span class="model-style">Gemini-<span class="text-gemini-blue">Flash</span></span> or
+            <span class="model-style">Hugging Face models</span>, VLMs generally favor human-made edits. Despite this,
             agreement with human judgments remains relatively low, with Cohen's &kappa; ranging from 0.14 to 0.25, which
             is near random in some cases (refer to Table new_kappa_model_group).
         </p>
@@ -685,7 +698,8 @@
             smoother and more polished. Similarly, the facial features of pets are improved, and even damaged areas,
             such as eyes, are restored—even when such changes were never requested.
             For example, when instructed simply to remove extraneous elements (\cref{fig:aesthetic_a}) or image
-            background (\cref{fig:aesthetic_b}), \SeedEdit{} and \gpt{} nonetheless enhance the dog's overall facial
+            background (\cref{fig:aesthetic_b}), <span class="model-style">SeedEdit</span> and \gpt{} nonetheless
+            enhance the dog's overall facial
             features beyond the explicit instructions provided by the user.
         </p>
         <p class="text">
@@ -729,7 +743,7 @@
             of tasks where AI-generated edits either outperform (win) or perform competitively (tie) compared to human
             edits. For each verb category (\cref{tab:verb-win-rates}), we multiply the combined AI win and tie rates by
             the proportion that each verb contributes to the overall dataset (\cref{fig:appendix_12_years_data}):
-            $\sum_{v=1}^{v} D_vAI_v * 100 = 33.35\% $
+            $\sum_{v=1}^{v} D_vAI_v * 100 = 33.35% $
             where $D_v$ represents the proportion of dataset requests associated with action verb $v$, and $AI_v$
             denotes the combined percentage of AI wins and ties for edits corresponding to verb $v$. Based on this
             calculation, we estimate current AI tools effectively handle about one-third of real-world image editing
